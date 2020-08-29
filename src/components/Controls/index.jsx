@@ -23,7 +23,7 @@ function Controls(props) {
         </li>
 
         {isOverflowingStartRange && (
-          <li key="...">
+          <li key="..." className={styles.dottedButton}>
             <button>...</button>
           </li>
         )}
@@ -61,12 +61,12 @@ function Controls(props) {
   }
 
   return (
-    <>
+    <div className={styles.dataWrapper}>
       <button onClick={onClick} value={currentIndex - 1}>
         {'<'}
       </button>
 
-      <ul>
+      <ul className={styles.dataList}>
         {getFirstPage()}
         {getButtons()}
       </ul>
@@ -74,7 +74,7 @@ function Controls(props) {
       <button onClick={onClick} value={currentIndex + 1}>
         {'>'}
       </button>
-    </>
+    </div>
   );
 }
 

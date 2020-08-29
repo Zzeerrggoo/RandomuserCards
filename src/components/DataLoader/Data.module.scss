@@ -1,4 +1,17 @@
 .dataLi {
-    display: inline-block;
-    margin: 2rem;
+  display: inline-block;
+  margin: 2rem;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  margin: 20vh 0;
 }

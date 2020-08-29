@@ -52,13 +52,16 @@ function UserCard(props) {
 }
 
 UserCard.propTypes = {
-  name: PropTypes.string,
+  name: PropTypes.shape({
+    first: PropTypes.string,
+    last: PropTypes.string,
+  }),
   email: PropTypes.string,
-  picture: PropTypes.string.isRequired,
+  picture: PropTypes.shape({ medium: PropTypes.string }).isRequired,
 };
 
 UserCard.defaultProps = {
-  name: 'Anonymous',
+  name: { first: 'Anonymous', last: 'Anonymous' },
   email: 'anon@example.com',
 };
 

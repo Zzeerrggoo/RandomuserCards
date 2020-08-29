@@ -3,6 +3,7 @@ import { getUsers } from '../../config/getUsers';
 import Controls from '../Controls';
 import UserCard from '../UserCard';
 import styles from './Data.module.scss';
+import Loader from 'react-loader-spinner';
 
 function DataLoader() {
   const [error, setError] = useState(null);
@@ -23,15 +24,27 @@ function DataLoader() {
 
   return (
     <>
-      <ul className={styles.cardsWrapper}>
-        {data.map((item, index) => (
-          <li key={index} className={styles.dataLi}>
-            <UserCard {...item} />
-          </li>
-        ))}
-      </ul>
+      {(!isFetching && (
+        <ul className={styles.cardsWrapper}>
+          {data.map((item, index) => (
+            <li key={index} className={styles.dataLi}>
+              <UserCard {...item} />
+            </li>
+          ))}
+        </ul>
+      )) || (
+        <Loader
+          type="Puff"
+          color="#00BFFF"
+          height={300}
+          width={300}
+          className={styles.loader}
+        />
+      )}
 
-      <Controls currentIndex={Number(currentPage)} onClick={handleClick} />
+      {!isFetching && (
+        <Controls currentIndex={Number(currentPage)} onClick={handleClick} />
+      )}
     </>
   );
 }
