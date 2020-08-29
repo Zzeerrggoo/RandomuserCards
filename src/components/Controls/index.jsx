@@ -1,10 +1,35 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
+import classNames from 'classnames';
+import styles from './Controls.module.scss';
 
 function Controls(props) {
   const { currentIndex, numOfNeighborButtons } = props;
   const { onClick } = props;
+
+  function getFirstPage() {
+    return (
+      <>
+        <li
+          key="1"
+          className={classNames(styles.controlBtn, {
+            [styles.currentBtn]: 1 === currentIndex,
+          })}
+        >
+          <button onClick={onClick} value={1}>
+            1
+          </button>
+        </li>
+
+        {isOverflowingStartRange && (
+          <li key="...">
+            <button>...</button>
+          </li>
+        )}
+      </>
+    );
+  }
 
   const isOverflowingStartRange =
     currentIndex - numOfNeighborButtons > numOfNeighborButtons + 1;
@@ -22,7 +47,12 @@ function Controls(props) {
 
   function getButtons() {
     return getRange().map(item => (
-      <li key={item}>
+      <li
+        key={item}
+        className={classNames(styles.controlBtn, {
+          [styles.currentBtn]: item === currentIndex,
+        })}
+      >
         <button onClick={onClick} value={item}>
           {item}
         </button>
@@ -37,18 +67,7 @@ function Controls(props) {
       </button>
 
       <ul>
-        <li key="1">
-          <button onClick={onClick} value={1}>
-            1
-          </button>
-        </li>
-
-        {isOverflowingStartRange && (
-          <li key="...">
-            <button>...</button>
-          </li>
-        )}
-
+        {getFirstPage()}
         {getButtons()}
       </ul>
 

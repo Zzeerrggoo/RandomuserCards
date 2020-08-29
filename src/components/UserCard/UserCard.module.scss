@@ -1,0 +1,93 @@
+h1,
+h2,
+h3 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #b9dee6;
+}
+
+.loader {
+  margin-top: 45px;
+}
+
+.cardsWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  --image-size: 200px;
+  --border-size: 10px;
+
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2em;
+
+  width: 320px;
+
+  font-family: Roboto, sans-serif;
+  text-align: center;
+
+  box-shadow: 0 0 8px 5px rgba(219, 210, 219, 1);
+  border-radius: 7px;
+  background-color: #fefefe;
+}
+
+article header {
+  position: relative;
+  margin: 2.5em;
+}
+
+.imageWrapper {
+  position: relative;
+  overflow: hidden;
+  width: var(--image-size);
+  height: var(--image-size);
+  border: var(--border-size) solid #efefef;
+  border-radius: 50%;
+}
+
+.imageWrapper img {
+  width: calc(var(--image-size) - 2 * var(--border-size));
+  height: calc(var(--image-size) - 2 * var(--border-size));
+  object-fit: cover;
+  object-position: top;
+}
+
+.card h1 {
+  font-size: 35px;
+  color: #fe5129;
+
+  margin: 0 0.7em 0.2em;
+}
+
+.card h2 {
+  font-size: 22px;
+  margin: 0 1.5em 1.8em;
+}
+
+.card p {
+  flex: 1 0 auto;
+  line-height: 1.5em;
+  font-size: 20px;
+  color: #1d1d1d;
+  margin: 0 1.5em 2em;
+}

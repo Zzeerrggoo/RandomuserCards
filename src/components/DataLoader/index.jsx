@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { getUsers } from '../../config/getUsers';
 import Controls from '../Controls';
+import UserCard from '../UserCard';
+import styles from './Data.module.scss';
 
 function DataLoader() {
   const [error, setError] = useState(null);
@@ -21,9 +23,11 @@ function DataLoader() {
 
   return (
     <>
-      <ul>
+      <ul className={styles.cardsWrapper}>
         {data.map((item, index) => (
-          <li key={index}>{`${index} ${JSON.stringify(item)}`}</li>
+          <li key={index} className={styles.dataLi}>
+            <UserCard {...item} />
+          </li>
         ))}
       </ul>
 
