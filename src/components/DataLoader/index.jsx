@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getUsers } from '../../config/getUsers';
+import Controls from '../Controls';
 
 function DataLoader() {
   const [error, setError] = useState(null);
@@ -14,28 +15,19 @@ function DataLoader() {
       .finally(() => setIsFetching(false));
   }, [currentPage]);
 
-  function nextPage() {
-    setCurrentPage(prev => prev + 1);
-  }
-
-  function prevPage() {
-    if (currentPage > 1) {
-      setCurrentPage(prev => prev - 1);
-    }
+  function handleClick({ target: { value } }) {
+    value < 1 ? setCurrentPage(1) : setCurrentPage(value);
   }
 
   return (
     <>
       <ul>
         {data.map((item, index) => (
-          <>
-            <li key={index}>{`${index} ${JSON.stringify(item)}`}</li>
-            <br />
-          </>
+          <li key={index}>{`${index} ${JSON.stringify(item)}`}</li>
         ))}
       </ul>
-      <button onClick={prevPage}>PREV</button>
-      <button onClick={nextPage}>NEXT</button>
+
+      <Controls currentIndex={Number(currentPage)} onClick={handleClick} />
     </>
   );
 }
