@@ -1,13 +1,18 @@
-.dataLi {
-  display: inline-block;
-  margin: 2rem;
-}
-
-#root {
+%flex-column-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+body {
+  @extend %flex-column-container;
+  background: #b9dee6;
+}
+
+.dataLi {
+  display: inline-block;
+  margin: 2rem;
 }
 
 .loader {

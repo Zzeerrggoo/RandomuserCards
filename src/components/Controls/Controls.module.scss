@@ -1,32 +1,29 @@
+.dataList {
+  display: inline-flex;
+  justify-content: center;
+  font-size: 2rem;
+  margin: 3rem;
+}
+
 .controlBtn {
-  display: inline;
+  width: 4rem;
+}
+
+.controlBtn:focus,
+.prevNextBtn:focus {
+  background-color: yellow;
   color: black;
 }
 
 .currentBtn {
-  background-color: red;
+  background-color: dodgerblue;
+  color: white;
 }
 
-.dataWrapper {
-  display: flex;
-  justify-content: center;
-
-  font-size: 2rem;
-}
-
-.dataList {
-  display: inline-flex;
-}
-
-.dataWrapper button {
+.prevNextBtn {
   width: 5rem;
 }
 
-.controlBtn button {
-  width: 3rem;
-  font-size: 2rem;
-}
-
 .dottedButton {
-  display: inline;
+  background-color: gray;
 }
