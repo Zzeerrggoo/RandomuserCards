@@ -8,31 +8,37 @@ function Controls(props) {
   const { currentIndex, numOfNeighborButtons } = props;
   const { onClick } = props;
 
+  const isOverflowingStartRange =
+    currentIndex - numOfNeighborButtons > numOfNeighborButtons + 1;
+
   function getFirstPage() {
     return (
       <>
-        <li
-          key="1"
-          className={classNames(styles.controlBtn, {
-            [styles.currentBtn]: 1 === currentIndex,
-          })}
-        >
-          <button onClick={onClick} value={1}>
+        <li key="1">
+          <button
+            onClick={onClick}
+            value={1}
+            className={classNames(styles.controlBtn, {
+              [styles.currentBtn]: 1 === currentIndex,
+            })}
+          >
             1
           </button>
         </li>
 
         {isOverflowingStartRange && (
-          <li key="..." className={styles.dottedButton}>
-            <button>...</button>
+          <li key="...">
+            <button
+              className={classNames(styles.controlBtn, styles.dottedButton)}
+              disabled
+            >
+              ...
+            </button>
           </li>
         )}
       </>
     );
   }
-
-  const isOverflowingStartRange =
-    currentIndex - numOfNeighborButtons > numOfNeighborButtons + 1;
 
   function getRange() {
     if (!isOverflowingStartRange) {
@@ -47,34 +53,42 @@ function Controls(props) {
 
   function getButtons() {
     return getRange().map(item => (
-      <li
-        key={item}
-        className={classNames(styles.controlBtn, {
-          [styles.currentBtn]: item === currentIndex,
-        })}
-      >
-        <button onClick={onClick} value={item}>
+      <li key={item}>
+        <button
+          onClick={onClick}
+          value={item}
+          className={classNames(styles.controlBtn, {
+            [styles.currentBtn]: item === currentIndex,
+          })}
+        >
           {item}
         </button>
       </li>
     ));
   }
 
+  function getPrevOrNextButton(value) {
+    return (
+      <li>
+        <button
+          tabIndex="0"
+          onClick={onClick}
+          value={value}
+          className={styles.prevNextBtn}
+        >
+          {value < currentIndex ? '<' : '>'}
+        </button>
+      </li>
+    );
+  }
+
   return (
-    <div className={styles.dataWrapper}>
-      <button onClick={onClick} value={currentIndex - 1}>
-        {'<'}
-      </button>
-
-      <ul className={styles.dataList}>
-        {getFirstPage()}
-        {getButtons()}
-      </ul>
-
-      <button onClick={onClick} value={currentIndex + 1}>
-        {'>'}
-      </button>
-    </div>
+    <ul className={styles.dataList}>
+      {getPrevOrNextButton(currentIndex - 1)}
+      {getFirstPage()}
+      {getButtons()}
+      {getPrevOrNextButton(currentIndex + 1)}
+    </ul>
   );
 }
 
