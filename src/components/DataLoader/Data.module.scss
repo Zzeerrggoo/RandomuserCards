@@ -1,17 +1,12 @@
-%flex-column-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
+@import '../../common/styles/_templates.scss';
 
 body {
-  @extend %flex-column-container;
+  @extend %flex-container;
+  flex-direction: column;
   background: #b9dee6;
 }
 
 .dataLi {
-  display: inline-block;
   margin: 2rem;
 }
 
@@ -19,4 +14,10 @@ body {
   display: flex;
   justify-content: center;
   margin: 20vh 0;
+}
+
+.cardsWrapper {
+  @extend %flex-container;
+  flex-wrap: wrap;
+  align-items: stretch;
 }

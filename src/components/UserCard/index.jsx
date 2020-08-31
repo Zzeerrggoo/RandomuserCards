@@ -29,18 +29,16 @@ function UserCard(props) {
 
   return (
     <article className={styles.card}>
-      <header>
-        <div className={styles.imageWrapper}>
-          {(isLoaded && <img src={picture.large} alt="User profile" />) || (
-            <Loader
-              type="Rings"
-              color="#00BFFF"
-              height={80}
-              width={80}
-              className={styles.loader}
-            />
-          )}
-        </div>
+      <header className={styles.imageWrapper}>
+        {(isLoaded && <img src={picture.large} alt="User profile" />) || (
+          <Loader
+            type="Rings"
+            color="#00BFFF"
+            height={80}
+            width={80}
+            className={styles.loader}
+          />
+        )}
       </header>
 
       <h1>

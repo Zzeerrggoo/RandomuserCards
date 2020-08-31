@@ -8,12 +8,12 @@
     "@testing-library/user-event": "^7.2.1",
     "classnames": "^2.2.6",
     "lodash": "^4.17.20",
+    "node-sass": "^4.14.1",
     "query-string": "^6.13.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-loader-spinner": "^3.1.14",
-    "react-scripts": "3.4.3",
-    "sass": "^1.26.10"
+    "react-scripts": "3.4.3"
   },
   "scripts": {
     "start": "react-scripts start",

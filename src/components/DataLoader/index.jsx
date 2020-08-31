@@ -12,7 +12,7 @@ function DataLoader() {
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    getUsers({ page: currentPage, results: 10 })
+    getUsers({ page: currentPage, results: 12 })
       .then(data => setData(data.results))
       .catch(error => setError(error))
       .finally(() => setIsFetching(false));

@@ -9,15 +9,14 @@
   width: 4rem;
 }
 
-.controlBtn:focus,
-.prevNextBtn:focus {
-  background-color: yellow;
-  color: black;
-}
-
 .currentBtn {
   background-color: dodgerblue;
   color: white;
+}
+
+.prevNextBtn:focus {
+  background-color: yellow;
+  color: black;
 }
 
 .prevNextBtn {

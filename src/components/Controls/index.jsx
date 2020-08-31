@@ -67,7 +67,7 @@ function Controls(props) {
     ));
   }
 
-  function getPrevOrNextButton(value) {
+  function getPrevOrNextButton(value, children) {
     return (
       <li>
         <button
@@ -76,7 +76,7 @@ function Controls(props) {
           value={value}
           className={styles.prevNextBtn}
         >
-          {value < currentIndex ? '<' : '>'}
+          {children}
         </button>
       </li>
     );
@@ -84,10 +84,10 @@ function Controls(props) {
 
   return (
     <ul className={styles.dataList}>
-      {getPrevOrNextButton(currentIndex - 1)}
+      {getPrevOrNextButton(currentIndex - 1, '<')}
       {getFirstPage()}
       {getButtons()}
-      {getPrevOrNextButton(currentIndex + 1)}
+      {getPrevOrNextButton(currentIndex + 1, '>')}
     </ul>
   );
 }
