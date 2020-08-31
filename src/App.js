@@ -1,8 +1,8 @@
 import React from 'react';
-import DataLoader from './components/DataLoader';
+import CardsPage from './components/CardsPage';
 
 function App() {
-  return <DataLoader />;
+  return <CardsPage />;
 }
 
 export default App;

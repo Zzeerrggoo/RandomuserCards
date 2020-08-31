@@ -30,15 +30,16 @@ function UserCard(props) {
   return (
     <article className={styles.card}>
       <header className={styles.imageWrapper}>
-        {(isLoaded && <img src={picture.large} alt="User profile" />) || (
+        {!isLoaded && (
           <Loader
             type="Rings"
             color="#00BFFF"
-            height={80}
-            width={80}
+            height={150}
+            width={150}
             className={styles.loader}
           />
         )}
+        {isLoaded && <img src={picture.large} alt="User profile" />}
       </header>
 
       <h1>

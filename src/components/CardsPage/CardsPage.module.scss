@@ -7,20 +7,10 @@ body {
   text-align: center;
 }
 
-.dataLi {
-  margin: 2rem;
-}
-
 .loader {
   display: flex;
   justify-content: center;
   margin: 20vh 0;
-}
-
-.cardsWrapper {
-  @extend %flex-container;
-  flex-wrap: wrap;
-  align-items: stretch;
 }
 
 .error {

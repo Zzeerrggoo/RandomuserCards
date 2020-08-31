@@ -1,7 +1,7 @@
-import { RANDOMUSER_CONFIG, BASE_URL } from '../config';
+import { RANDOMUSER_CONFIG, BASE_URL } from '.';
 import queryString from 'query-string';
 
-export const getUsers = config => {
+export const getData = config => {
   const res_config = { ...config, ...RANDOMUSER_CONFIG };
 
   return fetch(
