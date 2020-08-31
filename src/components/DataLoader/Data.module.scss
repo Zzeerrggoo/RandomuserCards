@@ -4,6 +4,7 @@ body {
   @extend %flex-container;
   flex-direction: column;
   background: #b9dee6;
+  text-align: center;
 }
 
 .dataLi {
@@ -20,4 +21,10 @@ body {
   @extend %flex-container;
   flex-wrap: wrap;
   align-items: stretch;
+}
+
+.error {
+  margin: 20vh 5vw;
+  font-size: 50px;
+  font-weight: 900;
 }

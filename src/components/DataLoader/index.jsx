@@ -42,9 +42,11 @@ function DataLoader() {
         />
       )}
 
-      {!isFetching && (
+      {!isFetching && !error && (
         <Controls currentIndex={Number(currentPage)} onClick={handleClick} />
       )}
+
+      {error && <h1 className={styles.error}>Oops, something went wrong</h1>}
     </>
   );
 }
