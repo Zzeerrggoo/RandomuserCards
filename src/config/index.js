@@ -4,4 +4,4 @@ export const RANDOMUSER_CONFIG = {
   inc: ['name', 'email', 'picture'],
 };
 
-export { getData } from './getData';
+export { getUsers } from './getUsers';

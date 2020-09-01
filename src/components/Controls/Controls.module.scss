@@ -1,12 +1,18 @@
+@import '../../common/styles/_templates.scss';
+
 .dataList {
-  display: inline-flex;
-  justify-content: center;
+  @extend %flex-container;
   font-size: 2rem;
   margin: 3rem;
 }
 
 .controlBtn {
   width: 4rem;
+  margin: 0.3rem;
+}
+
+.controlBtn:focus {
+  outline: 5px solid blue;
 }
 
 .currentBtn {
@@ -21,6 +27,7 @@
 
 .prevNextBtn {
   width: 5rem;
+  margin: 0.2rem;
 }
 
 .dottedButton {

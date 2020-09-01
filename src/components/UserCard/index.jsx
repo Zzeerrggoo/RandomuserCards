@@ -39,7 +39,9 @@ function UserCard(props) {
             className={styles.loader}
           />
         )}
-        {isLoaded && <img src={picture.large} alt="User profile" />}
+        {isLoaded && (
+          <img src={picture.large} alt={`${name.first}'s user profile`} />
+        )}
       </header>
 
       <h1>
