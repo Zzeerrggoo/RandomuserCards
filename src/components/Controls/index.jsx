@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import _ from 'lodash';
 import classNames from 'classnames';
 import styles from './Controls.module.scss';
+import FirstPageButton from './FirstPageButton';
 
 function Controls(props) {
   const { currentIndex, numOfNeighborButtons } = props;
@@ -10,35 +11,6 @@ function Controls(props) {
 
   const isOverflowingStartRange =
     currentIndex - numOfNeighborButtons > numOfNeighborButtons + 1;
-
-  function getFirstPage() {
-    return (
-      <>
-        <li key="1">
-          <button
-            onClick={onClick}
-            value={1}
-            className={classNames(styles.controlBtn, {
-              [styles.currentBtn]: 1 === currentIndex,
-            })}
-          >
-            1
-          </button>
-        </li>
-
-        {isOverflowingStartRange && (
-          <li key="...">
-            <button
-              className={classNames(styles.controlBtn, styles.dottedButton)}
-              disabled
-            >
-              ...
-            </button>
-          </li>
-        )}
-      </>
-    );
-  }
 
   function getRange() {
     if (!isOverflowingStartRange) {
@@ -85,7 +57,11 @@ function Controls(props) {
   return (
     <ul className={styles.dataList}>
       {getPrevOrNextButton(currentIndex - 1, '<')}
-      {getFirstPage()}
+      <FirstPageButton
+        onClick={onClick}
+        currentIndex={currentIndex}
+        isOverflowingStartRange={isOverflowingStartRange}
+      />
       {getButtons()}
       {getPrevOrNextButton(currentIndex + 1, '>')}
     </ul>

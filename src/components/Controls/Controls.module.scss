@@ -33,3 +33,17 @@
 .dottedButton {
   background-color: gray;
 }
+
+@media screen and (max-width: 500px) {
+  .dataList {
+    font-size: 1.5rem;
+  }
+
+  .controlBtn {
+    width: 2rem;
+  }
+
+  .prevNextBtn {
+    display: none;
+  }
+}

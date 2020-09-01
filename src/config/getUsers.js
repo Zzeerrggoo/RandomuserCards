@@ -1,10 +1,23 @@
-import { RANDOMUSER_CONFIG, BASE_URL } from '.';
 import queryString from 'query-string';
+import _ from 'lodash';
+import { USER } from '.';
 
-export const getUsers = config => {
-  const res_config = { ...config, ...RANDOMUSER_CONFIG };
+export const getUsers = queryParams => {
+  const {
+    baseUrl,
+    get: {
+      users: { defaultQueryParams, allowedQueryParams },
+    },
+  } = USER;
 
-  return fetch(
-    `${BASE_URL}?${queryString.stringify(res_config, { arrayFormat: 'comma' })}`
-  ).then(resolve => resolve.json());
+  const params = _.pick(
+    { ...defaultQueryParams, ...queryParams },
+    allowedQueryParams
+  );
+
+  const queryParamsStr = queryString.stringify(params, {
+    arrayFormat: 'comma',
+  });
+
+  return fetch(`${baseUrl}?${queryParamsStr}`).then(resolve => resolve.json());
 };
