@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { getUsers } from '../../config';
+import { getUsers } from '../../api';
 import Loader from 'react-loader-spinner';
 import Cards from './Cards';
 import Controls from '../Controls';

@@ -1,6 +1,6 @@
 import queryString from 'query-string';
 import _ from 'lodash';
-import { USER } from '.';
+import { USER } from '../config';
 
 export const getUsers = queryParams => {
   const {
