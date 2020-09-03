@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 function UserCard(props) {
   const { name, email, picture } = props;
   const [isLoaded, setIsLoaded] = useState(false);
-  const [img] = useState(new Image());
+  const [error, setError] = useState(false);
 
   function handleLoad() {
     setIsLoaded(true);
@@ -14,18 +14,20 @@ function UserCard(props) {
 
   function handleError() {
     setIsLoaded(false);
+    setError(true);
   }
 
   useEffect(() => {
     function loadImage() {
       return new Promise((resolve, reject) => {
+        const img = new Image();
         img.addEventListener('load', () => resolve());
         img.addEventListener('error', error => reject(error));
-        img.src = picture.medium;
+        img.src = picture.large;
       });
     }
     loadImage().then(handleLoad, handleError);
-  }, [img, picture.medium]);
+  }, [picture.large]);
 
   return (
     <article className={styles.card}>
@@ -39,7 +41,7 @@ function UserCard(props) {
             className={styles.loader}
           />
         )}
-        {isLoaded && (
+        {isLoaded && !error && (
           <img src={picture.large} alt={`${name.first}'s user profile`} />
         )}
       </header>
@@ -58,7 +60,7 @@ UserCard.propTypes = {
     last: PropTypes.string,
   }),
   email: PropTypes.string,
-  picture: PropTypes.shape({ medium: PropTypes.string }).isRequired,
+  picture: PropTypes.shape({ large: PropTypes.string }).isRequired,
 };
 
 UserCard.defaultProps = {
